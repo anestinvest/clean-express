@@ -1,66 +1,88 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a/index.html b/index.html
-index e8baa1d2dc8ade4eb5cd7298e69f927825e44743..cc0e91aa123bee968bd89b9c7cf6f2aeac336118 100644
---- a/index.html
-+++ b/index.html
-@@ -21,51 +21,57 @@
-   </style>
- </head>
- <body class="bg-slate-50 text-slate-800">
-   <!-- Header -->
-   <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
-     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-       <div class="flex items-center gap-3">
-         <div class="h-9 w-9 rounded-2xl bg-cyan-500 grid place-content-center text-white font-black">CE</div>
-         <div class="font-semibold text-lg tracking-tight">Clean Express</div>
-       </div>
-       <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-         <a href="#services" class="hover:text-cyan-600">Υπηρεσίες</a>
-         <a href="#process" class="hover:text-cyan-600">Διαδικασία</a>
-         <a href="#reviews" class="hover:text-cyan-600">Αξιολογήσεις</a>
-         <a href="#contact" class="hover:text-cyan-600">Επικοινωνία</a>
-       </nav>
-       <div class="flex items-center gap-3">
-         <button id="langToggle" class="text-xs px-3 py-1.5 rounded-full border border-slate-300 hover:border-cyan-500">EN</button>
-         <a href="#contact" class="hidden sm:inline-flex bg-cyan-600 hover:bg-cyan-700 text-white text-sm font-semibold px-4 py-2 rounded-xl shadow-soft">Ζήτησε Προσφορά</a>
-       </div>
-     </div>
-   </header>
- 
-   <!-- Hero -->
-   <section class="relative">
--    <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1585421514738-0131e7b1cb7e?q=80&w=2000&auto=format&fit=crop" alt="cleaning" />
-+    <img
-+      class="absolute inset-0 w-full h-full object-cover"
-+      src="./assets/images/hero-banner.png"
-+      data-fallback="/clean-express/assets/images/hero-banner.png"
-+      onerror="if(!this.dataset.retry){this.dataset.retry='true';this.src=this.dataset.fallback;}"
-+      alt="Professional cleaner smiling with equipment"
-+    />
-     <div class="relative bg-slate-900/60">
-       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-28">
-         <div class="max-w-3xl text-white">
-           <h1 class="text-4xl md:text-5xl font-extrabold leading-tight" data-i18n="heroTitle">Καθαρισμός Airbnb & Επαγγελματικών Χώρων στην Αττική</h1>
-           <p class="mt-4 text-lg md:text-xl text-slate-200" data-i18n="heroSub">Γρήγορα συνεργεία, οικολογικά υλικά, 5★ αξιολόγηση πελατών. Κλείσε σήμερα καθαρισμό ή ζήτησε προσφορά μέσα σε 2′.</p>
-           <div class="mt-8 flex flex-wrap items-center gap-3">
-             <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-xl shadow-soft" data-i18n="cta1">Άμεση Προσφορά</a>
-             <a href="#services" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-6 py-3 rounded-xl" data-i18n="cta2">Δες Υπηρεσίες</a>
-           </div>
-           <div class="mt-6 flex items-center gap-4 text-sm text-slate-200">
-             <div>✔ 24/7</div>
-             <div>✔ Eco-friendly</div>
-             <div>✔ Ασφάλιση εργασιών</div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </section>
- 
-   <!-- Trust bar -->
-   <section class="bg-white">
-     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-       <div class="p-4 rounded-2xl border border-slate-200">
-         <div class="text-3xl font-extrabold text-cyan-600">5★</div>
-         <div class="text-sm" data-i18n="trust1">Αξιολόγηση πελατών</div> 
-EOF
-)
+<!doctype html>
+
+<html lang="el">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clean Express — Καθαρισμοί & Συντήρηση</title>
+  <meta name="description" content="Facility Clean Express: Επαγγελματικός καθαρισμός Airbnb, γραφείων, parking και σκαφών σε όλη την Αττική." />
+  <meta property="og:title" content="Clean Express — Καθαρισμοί & Συντήρηση" />
+  <meta property="og:description" content="Εμπειρία, ταχύτητα, αξιοπιστία. Καθαρισμοί Airbnb, επαγγελματικοί χώροι, μετά από εργασίες, πάρκινγκ, σκάφη." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://anestinvest.github.io/clean-express/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{ --brand:#0ea5e9; --brand-dark:#0284c7; --ink:#0b1220 }
+    html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    .glass{backdrop-filter:saturate(160%) blur(8px); background:rgba(255,255,255,.75)}
+    .shadow-soft{box-shadow:0 10px 30px rgba(2,132,199,.15)}
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-2xl bg-cyan-500 grid place-content-center text-white font-black">CE</div>
+        <div class="font-semibold text-lg tracking-tight">Clean Express</div>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="#services" class="hover:text-cyan-600">Υπηρεσίες</a>
+        <a href="#process" class="hover:text-cyan-600">Διαδικασία</a>
+        <a href="#reviews" class="hover:text-cyan-600">Αξιολογήσεις</a>
+        <a href="#contact" class="hover:text-cyan-600">Επικοινωνία</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <button id="langToggle" class="text-xs px-3 py-1.5 rounded-full border border-slate-300 hover:border-cyan-500">EN</button>
+        <a href="#contact" class="hidden sm:inline-flex bg-cyan-600 hover:bg-cyan-700 text-white text-sm font-semibold px-4 py-2 rounded-xl shadow-soft">Ζήτησε Προσφορά</a>
+      </div>
+    </div>
+  </header>  <section class="relative">
+    <img class="absolute inset-0 w-full h-full object-cover" src="assets/images/hero-banner.png" alt="cleaning" />
+    <div class="relative bg-slate-900/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-28">
+        <div class="max-w-3xl text-white">
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Καθαρισμός Airbnb & Επαγγελματικών Χώρων στην Αττική</h1>
+          <p class="mt-4 text-lg md:text-xl text-slate-200">Γρήγορα συνεργεία, οικολογικά υλικά, 5★ αξιολόγηση πελατών. Κλείσε σήμερα καθαρισμό ή ζήτησε προσφορά μέσα σε 2′.</p>
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-xl shadow-soft">Άμεση Προσφορά</a>
+            <a href="#services" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-6 py-3 rounded-xl">Δες Υπηρεσίες</a>
+          </div>
+          <div class="mt-6 flex items-center gap-4 text-sm text-slate-200">
+            <div>✔ 24/7</div>
+            <div>✔ Eco-friendly</div>
+            <div>✔ Ασφάλιση εργασιών</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  <section class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="p-4 rounded-2xl border border-slate-200">
+        <div class="text-3xl font-extrabold text-cyan-600">5★</div>
+        <div class="text-sm">Αξιολόγηση πελατών</div>
+      </div>
+      <div class="p-4 rounded-2xl border border-slate-200">
+        <div class="text-3xl font-extrabold text-cyan-600">2h</div>
+        <div class="text-sm">Μέσος χρόνος ανταπόκρισης</div>
+      </div>
+      <div class="p-4 rounded-2xl border border-slate-200">
+        <div class="text-3xl font-extrabold text-cyan-600">1000+</div>
+        <div class="text-sm">Έργα τον τελευταίο χρόνο</div>
+      </div>
+      <div class="p-4 rounded-2xl border border-slate-200">
+        <div class="text-3xl font-extrabold text-cyan-600">ISO</div>
+        <div class="text-sm">Τήρηση προτύπων υγιεινής</div>
+      </div>
+    </div>
+  </section>  <footer class="border-t border-slate-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-slate-500">© <span id="y"></span> Clean Express. All rights reserved.</p>
+      <div class="text-sm text-slate-500">ΑΦΜ 000000000 • ΓΕΜΗ 000000000</div>
+    </div>
+  </footer>  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script></body>
+</html>
